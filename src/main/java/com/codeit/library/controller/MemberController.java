@@ -19,6 +19,12 @@ public class MemberController {
 
     private final MemberService memberService;
 
+    @GetMapping("/merong")
+    public String merong() {
+        return "Merong~! 배포 테스트 해볼게요~~";
+    }
+
+
     @PostMapping
     public ResponseEntity<MemberResponse> createMember(
             @Valid @RequestPart("request") MemberCreateRequest request,

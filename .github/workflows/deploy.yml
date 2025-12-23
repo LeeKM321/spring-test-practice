@@ -90,6 +90,10 @@ jobs:
             --task-definition my-spring-app \
             --query taskDefinition > task-definition.json
           
+          # AWS ECS에서 Task Definition을 다운로드 할 때 읽기 전용 필드들이 포함되는데
+          # 이걸 마지막 스텝에서 그대로 등록하려 하면 에러가 발생.
+          # 읽기 전용 필드들을 제거해 주는 작업을 진행. 
+          
           sudo apt-get update && sudo apt-get install -y jq
           
           jq 'del(
